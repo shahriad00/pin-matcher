@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pin-generator half-width">
+                    <input id="random-display" class="form-control" type="text">
+                    <button id="generate-button" class="generate-btn">Generate Pin</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-section half-width">
+                    <input id="input-display"class="form-control" type="text">
+                    <div class="numbers">
+                        <div class="calc-body">
+                            <div class="calc-button-row">
+                              <div class="button" onclick = "inputDisplay(7)">7</div>
+                              <div class="button" onclick = "inputDisplay(8)">8</div>
+                              <div class="button" onclick = "inputDisplay(9)">9</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div class="button" onclick = "inputDisplay(4)">4</div>
+                              <div class="button" onclick = "inputDisplay(5)">5</div>
+                              <div class="button" onclick = "inputDisplay(6)">6</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div class="button" onclick = "inputDisplay(1)">1</div>
+                              <div class="button" onclick = "inputDisplay(2)">2</div>
+                              <div class="button" onclick = "inputDisplay(3)">3</div>
+                            </div>
+                            <div class="calc-button-row">
+                                <div class="button" onclick = "inputDisplay(25)"><</div>
+                                <div class="button" onclick = "inputDisplay(0)">0</div>
+                                <div class="button" onclick = "inputDisplay(15)">C</div>
+                            </div>
+                            <div>
+                                <button id="submitBtn" type="submit" class="submit-btn">Submit</button>
+                                <p class="action-left">3 try left</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notify-section">
+            <p id="notify-error" class="notify">❌ Pin Didn't Match, Please try again</p>
+            <p id="notify-success" class="notify">✅ Pin Matched... Secret door is opening for you</p>
+        </div>
+    </div>
+
+    <script>
+        let generateButton = document.getElementById('generate-button');
+        generateButton.addEventListener('click', function(){
+         let   addRandom = Math.floor(1000 + Math.random(generateButton)*9000);
+               document.getElementById('random-display').value = addRandom;
+        })
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.addEventListener('click', function(){
+            let verify = document.getElementById('input-display').value ;
+            let random = document.getElementById('random-display').value;
+            if(verify == random){
+                 document.getElementById('notify-success').style.display='block';
+            }
+            else{
+                document.getElementById('notify-error').style.display='block';
+            }
+        })
+        
+
+        function inputDisplay(num){
+            const input = document.getElementById('input-display');
+            if(num == 1){
+                input.value += 1;
+            }
+            if(num == 2){
+                input.value += 2;
+            }
+            if(num == 3){
+                input.value += 3;
+            }
+            if(num == 4){
+                input.value += 4;
+            }
+            if(num == 5){
+                input.value += 5;
+            }
+            if(num == 6){
+                input.value += 6;
+            }
+            if(num == 7){
+                input.value += 7;
+            }
+            if(num == 8){
+                input.value += 8;
+            }
+            if(num == 9){
+                input.value += 9;
+            }
+            if(num == 0){
+                input.value += 0;
+            }
+            
+            if(num == 25 ){
+                input.value = input.value.slice(0,-1);
+            }
+            if(num == 15){
+                input.value = ' ' ;
+            }
+            document.getElementById('input-display').value = input.value;
+            return input.value;
+        }
+    </script>
+</body>
+</html>
