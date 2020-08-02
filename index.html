@@ -43,7 +43,7 @@
                             </div>
                             <div>
                                 <button id="submitBtn" type="submit" class="submit-btn">Submit</button>
-                                <p class="action-left">3 try left</p>
+                                <p id="actionLeft" class="action-left">3 try left</p>
                             </div>
                     </div>
                 </div>
@@ -65,14 +65,21 @@
         submitBtn.addEventListener('click', function(){
             let verify = document.getElementById('input-display').value ;
             let random = document.getElementById('random-display').value;
+            let actionLeft = document.getElementById('actionLeft').innerText;
+
             if(verify == random){
                  document.getElementById('notify-success').style.display='block';
+                 document.getElementById('notify-error').style.display='none';
             }
             else{
                 document.getElementById('notify-error').style.display='block';
-            }
+                document.getElementById('notify-success').style.display='none';            
+            }            
         })
         
+        //how many try left
+        
+    
 
         function inputDisplay(num){
             const input = document.getElementById('input-display');
