@@ -43,7 +43,7 @@
                             </div>
                             <div>
                                 <button id="submitBtn" type="submit" class="submit-btn">Submit</button>
-                                <p id="actionLeft" class="action-left">3 try left</p>
+                                <p class="action-left"><span id="tryLeft">3</span> try left</p>
                             </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
         submitBtn.addEventListener('click', function(){
             let verify = document.getElementById('input-display').value ;
             let random = document.getElementById('random-display').value;
-            let actionLeft = document.getElementById('actionLeft').innerText;
+            let tryLeft = document.getElementById('tryLeft').innerText;
 
             if(verify == random){
                  document.getElementById('notify-success').style.display='block';
@@ -73,13 +73,23 @@
             }
             else{
                 document.getElementById('notify-error').style.display='block';
-                document.getElementById('notify-success').style.display='none';            
-            }            
+                document.getElementById('notify-success').style.display='none'; 
+                    if(tryLeft >= 1){
+                        let element = tryLeft - 1;
+                        document.getElementById('tryLeft').innerText = element;
+                            if(tryLeft == 1){
+                                const submitBtn2 = document.getElementById('submitBtn');
+                                submitBtn2.style.display='none'
+                            }
+                            
+                    } 
+                    
+                   
+                    // console.log(element);
+                    
+                }           
+                    
         })
-        
-    
-        
-    
 
         function inputDisplay(num){
             const input = document.getElementById('input-display');
