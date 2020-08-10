@@ -11,8 +11,12 @@ body {
 .form-control{
     text-align: center;
     font-size: large;
+    background: #39458C;
 }
-
+.form-control:disabled, .form-control[readonly] {
+    background-color: #3d4153;
+    opacity: 1;
+}
 
 .half-width {
     height: 570px;
